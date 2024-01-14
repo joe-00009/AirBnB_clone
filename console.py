@@ -32,7 +32,7 @@ class HBNBCommand(cmd.Cmd):
     def emptyline(self):
         """Empty line handler."""
         pass
-    
+
     def default(self, arg):
         """Default behavior for cmd module when input is invalid"""
         argdict = {
@@ -62,7 +62,7 @@ class HBNBCommand(cmd.Cmd):
         """EOF signal to exit the program."""
         print("")
         return True
-    
+
     def do_create(self, arg):
         """Usage: create <class>
         Create a new class instance and print its id.
