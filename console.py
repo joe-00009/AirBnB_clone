@@ -15,33 +15,39 @@ class HBNBCommand(cmd.Cmd):
         """Empty line handler."""
         pass
 
-    def do_create(self, arg):
-        """Create a new instance of BaseModel, save it, and print the id."""
-        args = arg.split()
+    def do_create(self, args):
+        """ Creates a new instance, saves it, and prints the id """
         if not args:
             print("** class name missing **")
-        elif args[0] not in storage.classes:
+            return
+        try:
+            cls = eval(args)
+            instance = cls()
+            instance.save()
+            print(instance.id)
+        except NameError:
             print("** class doesn't exist **")
-        else:
-            new_instance = storage.classes[args[0]]()
-            new_instance.save()
-            print(new_instance.id)
 
-    def do_show(self, arg):
-        """Prints the string representation of an instance."""
-        args = arg.split()
+    def do_show(self, args):
+        """ Prints the string representation of an instance """
         if not args:
             print("** class name missing **")
-        elif args[0] not in storage.classes:
+            return
+        args_list = args.split()
+        try:
+            cls = eval(args_list[0])
+        except NameError:
             print("** class doesn't exist **")
-        elif len(args) < 2:
+            return
+        if len(args_list) < 2:
             print("** instance id missing **")
+            return
+        key = "{}.{}".format(args_list[0], args_list[1])
+        objects = storage.all()
+        if key not in objects:
+            print("** no instance found **")
         else:
-            key = "{}.{}".format(args[0], args[1])
-            if key in storage.all():
-                print(storage.all()[key])
-            else:
-                print("** no instance found **")
+            print(objects[key])
 
     def do_destroy(self, arg):
         """Deletes an instance based on the class name and id."""
