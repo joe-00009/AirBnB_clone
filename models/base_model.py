@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Defines the BaseModel Class."""
 import models
+from models import storage
 from uuid import uuid4
 from datetime import datetime
 
@@ -31,6 +32,7 @@ class BaseModel:
     def save(self):
         """Update updated_at with the current datetime."""
         self.updated_at = datetime.now()
+        storage.save()
 
     def to_dict(self):
         """
