@@ -29,8 +29,8 @@ class HBNBCommand(cmd.Cmd):
         """Help message for EOF command"""
         print("Exit the program")
 
-        def do_create(self, arg):
-        """Create a new instance of BaseModel, saves it to the JSON file, and prints the id"""
+    def do_create(self, arg):
+    """Create a new instance of BaseModel, saves it to the JSON file, and prints the id"""
         if not arg:
             print("** class name missing **")
         else:
@@ -41,5 +41,7 @@ class HBNBCommand(cmd.Cmd):
                 new_instance = eval(f"{class_name}()")
                 new_instance.save()
                 print(new_instance.id)
+
+
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
