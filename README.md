@@ -15,7 +15,7 @@ Team project to build a clone of [AirBnB](https://www.airbnb.com/).
 
 The console is a command interpreter to manage objects abstraction between objects and how they are stored.
 
-To see the fundamental background of the project visit the [Wiki](https://github.com/ralexrivero/AirBnB_clone/wiki).
+To see the fundamental background of the project visit the [Wiki](https://github.com/Joe-0009/AirBnB_clone/wiki).
 
 The console will perform the following tasks:
 
@@ -42,7 +42,7 @@ All the development and testing was runned over an operating system Ubuntu 20.04
 ## 0x03 Installation
 
 ```bash
-git clone https://github.com/aysuarex/AirBnB_clone.git
+git clone https://github.com/Joe-0009/AirBnB_clone.git
 ```
 
 change to the `AirBnb` directory and run the command:
