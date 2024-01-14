@@ -57,6 +57,30 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(my_model.created_at, my_new_model.created_at)
         self.assertEqual(my_model.updated_at, my_new_model.updated_at)
 
+    def test_save_reload(self):
+        """Test the save and reload functionality."""
+        all_objs_before = storage.all()
+
+        my_model = BaseModel()
+        my_model.name = "My_First_Model"
+        my_model.my_number = 89
+        my_model.save()
+
+        storage.reload()
+        all_objs_after = storage.all()
+
+        self.assertGreater(len(all_objs_after), len(all_objs_before))
+
+        keys_after = set(all_objs_after.keys())
+        keys_before = set(all_objs_before.keys())
+
+        self.assertTrue(keys_after.issuperset(keys_before))
+
+        for key in keys_before:
+            obj_after = all_objs_after[key]
+            obj_before = all_objs_before[key]
+            self.assertEqual(obj_after.to_dict(), obj_before.to_dict())
+
 
 if __name__ == "__main__":
     unittest.main()
