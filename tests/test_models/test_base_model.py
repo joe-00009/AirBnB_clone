@@ -3,6 +3,7 @@
 import unittest
 from models.base_model import BaseModel
 
+
 class TestBaseModel(unittest.TestCase):
     """Defines the TestBaseModel class."""
 
@@ -12,12 +13,17 @@ class TestBaseModel(unittest.TestCase):
         self.assertIsInstance(my_model.id, str)
         self.assertIsInstance(my_model.created_at, datetime)
         self.assertIsInstance(my_model.updated_at, datetime)
+        self.assertNotEqual(base.id, base2.id)
 
     def test_str_representation(self):
         """Test the __str__ method of BaseModel."""
         my_model = BaseModel()
-        str_representation = "[BaseModel] ({}) {}".format(my_model.id, my_model.__dict__)
+        str_representation = "[BaseModel] ({}) {}".format(my_model.id,
+                                                          my_model.__dict__)
         self.assertEqual(str(my_model), str_representation)
+        self.assertEqual(base.__str__(),
+                         f"[{type(base).__name__}] \
+({base.id}) {base.__dict__}")
 
     def test_save_method(self):
         """Test the save method of BaseModel."""
@@ -51,7 +57,6 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(my_model.created_at, my_new_model.created_at)
         self.assertEqual(my_model.updated_at, my_new_model.updated_at)
 
+
 if __name__ == "__main__":
     unittest.main()
-
-
