@@ -56,7 +56,7 @@ class HBNBCommand(cmd.Cmd):
     def default(self, arg):
         """Default behavior for cmd module when input is invalid"""
         argdict = {
-            "all": self.isma_all,
+            "all": self.do_all,
             "show": self.do_show,
             "destroy": self.isma_destroy,
             "count": self.joe_count,
@@ -130,7 +130,7 @@ class HBNBCommand(cmd.Cmd):
             del objdict["{}.{}".format(argl[0], argl[1])]
             storage.save()
 
-    def isma_all(self, arg):
+    def do_all(self, arg):
         """Usage: all or all <class> or <class>.all()
         Display string representations of all instances of a given class.
         If no class is specified, displays all instantiated objects."""
