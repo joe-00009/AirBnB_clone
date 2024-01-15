@@ -57,7 +57,7 @@ class HBNBCommand(cmd.Cmd):
         """Default behavior for cmd module when input is invalid"""
         argdict = {
             "all": self.isma_all,
-            "show": self.joe_show,
+            "show": self.do_show,
             "destroy": self.isma_destroy,
             "count": self.joe_count,
             "update": self.do_update
@@ -96,7 +96,7 @@ class HBNBCommand(cmd.Cmd):
             print(eval(argl[0])().id)
             storage.save()
 
-    def joe_show(self, arg):
+    def do_show(self, arg):
         """Usage: show <class> <id> or <class>.show(<id>)
         Display the string representation of a class instance of a given id.
         """
