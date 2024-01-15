@@ -60,7 +60,7 @@ class HBNBCommand(cmd.Cmd):
             "show": self.joe_show,
             "destroy": self.isma_destroy,
             "count": self.joe_count,
-            "update": self.isma_update
+            "update": self.do_update
         }
         match = re.search(r"\.", arg)
         if match is not None:
@@ -156,7 +156,7 @@ class HBNBCommand(cmd.Cmd):
                 cnt += 1
         print(cnt)
 
-    def isma_update(self, arg):
+    def do_update(self, arg):
         """Usage: update <class> <id> <attribute_name> <attribute_value> or
        <class>.update(<id>, <attribute_name>, <attribute_value>) or
        <class>.update(<id>, <dictionary>)
