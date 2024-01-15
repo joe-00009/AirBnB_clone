@@ -67,10 +67,10 @@ class HBNBCommand(cmd.Cmd):
             argl = [arg[:match.span()[0]], arg[match.span()[1]:]]
             match = re.search(r"\((.*?)\)", argl[1])
             if match is not None:
-                command = [argl[1][:match.span()[0]], match.group()[1:-1]]
-                if command[0] in argdict.keys():
-                    call = "{} {}".format(argl[0], command[1])
-                    return argdict[command[0]](call)
+                cmmd = [argl[1][:match.span()[0]], match.group()[1:-1]]
+                if cmmd[0] in argdict.keys():
+                    call = "{} {}".format(argl[0], cmmd[1])
+                    return argdict[cmmd[0]](call)
         print("*** Unknown syntax: {}".format(arg))
         return False
 
