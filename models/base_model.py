@@ -20,11 +20,11 @@ class BaseModel:
         self.created_at = datetime.today()
         self.updated_at = datetime.today()
         if len(kwargs) != 0:
-            for k, v in kwargs.items():
+            for k, j in kwargs.items():
                 if k == "created_at" or k == "updated_at":
-                    self.__dict__[k] = datetime.strptime(v, t_form)
+                    self.__dict__[k] = datetime.strptime(j, t_form)
                 else:
-                    self.__dict__[k] = v
+                    self.__dict__[k] = j
         else:
             models.storage.new(self)
 
@@ -44,8 +44,8 @@ class BaseModel:
         Includes the key/value pair __class__ representing
         the class name of the object.
         """
-        rdict = self.__dict__.copy()
-        rdict["created_at"] = self.created_at.isoformat()
-        rdict["updated_at"] = self.updated_at.isoformat()
-        rdict["__class__"] = self.__class__.__name__
-        return rdict
+        frdict = self.__dict__.copy()
+        frdict["created_at"] = self.created_at.isoformat()
+        frdict["updated_at"] = self.updated_at.isoformat()
+        frdict["__class__"] = self.__class__.__name__
+        return frdict
